@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "82e323d4-9b72-4de8-8a1a-330ca3539d17",
+		"name": "Load Views",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29352414"
+	},
+	"item": [
+		{
+			"name": "GET Home",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET iniciar-sesion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/iniciar-sesion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"iniciar-sesion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Contacto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/contacto",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"contacto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Servicios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/servicios",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"servicios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Ubicacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ubicacion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ubicacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Quienes somos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/quienes-somos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"quienes-somos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Contactar administrador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/contactar-administrador",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"contactar-administrador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/dashboard",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/siginin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"siginin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

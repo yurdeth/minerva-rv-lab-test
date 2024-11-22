@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "a325495c-4821-4dea-b1e7-dc05e3994940",
+		"name": "User management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29352414"
+	},
+	"item": [
+		{
+			"name": "GET Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Users no privilege",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; // Verifica que sea una cadena no vacía\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y tiene un valor válido\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/home\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ángel Gabriel Vásquez Crespo\",\r\n    \"email\": \"VC21007@ues.edu.sv\",\r\n    \"password\": \"angelvasquez2570\",\r\n    \"password_confirmation\": \"angelvasquez2570\",\r\n    \"career\": 1,\r\n    \"remote_user_id\": 110 // <- Test purpose only\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Edit user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; // Verifica que sea una cadena no vacía\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y tiene un valor válido\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/home\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Gabriel Ángel Vásquez Crespo\",\r\n    \"email\": \"VC21007@ues.edu.sv\",\r\n    \"password\": \"angelvasquez2570\",\r\n    \"password_confirmation\": \"angelvasquez2570\",\r\n    \"career\": 1,\r\n    \"remote_user_id\": 110 // <- Test purpose only\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/users/editar/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"editar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"        pm.expect(jsonResponse.message).to.eql(\"Usuario eliminado\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'redirectTo' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirectTo\");\r",
+							"        pm.expect(jsonResponse.redirect_to).to.eql(\"/api/users\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    // Imprimir los valores para verificar en consola\r",
+							"    console.log(\"Mensaje:\", jsonResponse.message);\r",
+							"    console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    console.log(\"Success:\", jsonResponse.success);\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"number_of_assistants\": 20,\r\n    \"start_time\": \"14:00\",\r\n    \"end_time\": \"15:00\",\r\n    \"date\": \"2024-12-22\",\r\n    \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/users/eliminar/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"eliminar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Delete user Not Existing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"        pm.expect(jsonResponse.message).to.eql(\"Usuario eliminado\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'redirectTo' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirectTo\");\r",
+							"        pm.expect(jsonResponse.redirect_to).to.eql(\"/api/users\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es falso\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.false;\r",
+							"    });\r",
+							"\r",
+							"    // Imprimir los valores para verificar en consola\r",
+							"    console.log(\"Mensaje:\", jsonResponse.message);\r",
+							"    console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    console.log(\"Success:\", jsonResponse.success);\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"number_of_assistants\": 20,\r\n    \"start_time\": \"14:00\",\r\n    \"end_time\": \"15:00\",\r\n    \"date\": \"2024-12-22\",\r\n    \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/users/eliminar/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"eliminar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Delete user no privilege",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"        pm.expect(jsonResponse.message).to.eql(\"Usuario eliminado\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'redirectTo' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirectTo\");\r",
+							"        pm.expect(jsonResponse.redirect_to).to.eql(\"/api/users\");\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    // Imprimir los valores para verificar en consola\r",
+							"    console.log(\"Mensaje:\", jsonResponse.message);\r",
+							"    console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    console.log(\"Success:\", jsonResponse.success);\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"number_of_assistants\": 20,\r\n    \"start_time\": \"14:00\",\r\n    \"end_time\": \"15:00\",\r\n    \"date\": \"2024-12-22\",\r\n    \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/users/eliminar/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"eliminar",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

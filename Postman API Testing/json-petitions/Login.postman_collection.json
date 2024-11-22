@@ -1,0 +1,655 @@
+{
+	"info": {
+		"_postman_id": "0c9dfc2d-fc95-41e4-bb5e-1469c887a767",
+		"name": "Login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29352414"
+	},
+	"item": [
+		{
+			"name": "Login Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como texto\r",
+							"let responseBody = pm.response.text();\r",
+							"\r",
+							"// Buscar el título de la página\r",
+							"let titleMatch = responseBody.match(/<title>(.*?)<\\/title>/);\r",
+							"\r",
+							"// Verificar si el título existe y es correcto\r",
+							"if (titleMatch && titleMatch[1]) {\r",
+							"    let pageTitle = titleMatch[1];\r",
+							"    pm.test(\"El título de la página es correcto\", function () {\r",
+							"        pm.expect(pageTitle).to.eql(\"Minerva VR Web\");\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.test(\"No se encontró un título en la página\", function () {\r",
+							"        pm.expect(titleMatch).not.to.be.null;\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/iniciar-sesion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"iniciar-sesion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Admin Siginin correct credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; // Verifica que sea una cadena no vacía\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y tiene un valor válido\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/dashboard\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"adminpasswordjustfortesting\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST User Siginin correct credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; // Verifica que sea una cadena no vacía\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y tiene un valor válido\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/home\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"VC21007@ues.edu.sv\",\r\n    \"password\": \"VC21007@ues.edu.sv\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Admin Siginin wrong credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); \r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; \r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y tiene un valor válido\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/dashboard\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El mensaje indica error\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\"); \r",
+							"        pm.expect(jsonResponse.message).to.be.a(\"string\").that.includes(\"Credenciales erróneas\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Admin Siginin wrong email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); \r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; \r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y redirige a iniciar sesión\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/api/login\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El mensaje indica error\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\"); \r",
+							"        pm.expect(jsonResponse.message).to.be.a(\"string\").that.includes(\"Credenciales erróneas\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin\",\r\n    \"password\": \"adminpasswordjustfortesting\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Admin Siginin wrong password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); \r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; \r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y redirige a iniciar sesión\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/api/login\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El mensaje indica error\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\"); \r",
+							"        pm.expect(jsonResponse.message).to.be.a(\"string\").that.includes(\"Credenciales erróneas\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Admin Siginin empty credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El token de sesión existe\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token\"); \r",
+							"        pm.expect(jsonResponse.token).to.be.a(\"string\").that.is.not.empty; \r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El token es de tipo Bearer\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"token_type\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.token_type).to.be.a(\"string\").that.includes('Bearer');\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.token) {\r",
+							"        console.log(\"Token:\", jsonResponse.token);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'redirect_to' existe y redirige a iniciar sesión\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"redirect_to\"); // Verifica que el campo exista\r",
+							"        pm.expect(jsonResponse.redirect_to).to.be.a(\"string\").that.includes(\"http://127.0.0.1:8000/api/login\");\r",
+							"    });\r",
+							"\r",
+							"    if (jsonResponse.redirect_to) {\r",
+							"        console.log(\"Redirect to:\", jsonResponse.redirect_to);\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true; // Verifica que sea true\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El mensaje indica error\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\"); \r",
+							"        pm.expect(jsonResponse.message).to.be.a(\"string\").that.includes(\"Credenciales erróneas\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "375006a4-14c1-481d-978d-d5d69a5ff6f7",
+		"name": "Departments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29352414"
+	},
+	"item": [
+		{
+			"name": "GET Departments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/departments",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Department by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/departments/ver/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"ver",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Department",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"department_name\": \"Medicina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/departments/nuevo",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"nuevo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Same Department",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"department_name\": \"Medicina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/departments/nuevo",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"nuevo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Department",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"department_name\": \"Medicina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/departments/editar/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"editar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Department",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", function () {\r",
+							"    pm.response.to.have.status(201); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es verdadero\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.true;\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/departments/eliminar/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"eliminar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Department Not Existing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 404\", function () {\r",
+							"    pm.response.to.have.status(404); // Verifica que la respuesta sea 200\r",
+							"});\r",
+							"\r",
+							"// Extraer el cuerpo de la respuesta como JSON\r",
+							"let jsonResponse;\r",
+							"try {\r",
+							"    jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.test(\"El campo 'success' es falso\", function () {\r",
+							"        pm.expect(jsonResponse.success).to.be.false;\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"El campo 'message' existe y tiene el valor esperado\", function () {\r",
+							"        pm.expect(jsonResponse).to.have.property(\"message\");\r",
+							"    });\r",
+							"\r",
+							"} catch (e) {\r",
+							"    pm.test(\"La respuesta no es un JSON válido\", function () {\r",
+							"        pm.expect.fail(\"Error al analizar la respuesta JSON: \" + e.message);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZDY4ZDg3MC0yZjg4LTRkMmUtOTQzYS0wZGU0NjM3NTdlOGMiLCJqdGkiOiJkZGNkNzAzNjY1YzYzOTExYTg2MGQ0ODJhNDU2OTkwMDA4ZGE4MWQxZWY5ZmIwYmNiMzNmZWUyZGI4MDZhZDFiZTE2YTE1ZWViYWZkZjQyYiIsImlhdCI6MTczMjAzNzk0MS45OTQ4MDQsIm5iZiI6MTczMjAzNzk0MS45OTQ4MDcsImV4cCI6MTc0NzY3NjM0MS45ODMxNTYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.qIRyE1d9-3VHbdZg24oeDscbAO-jy9i98jX-w1dxq4JsWE2WjBHaYNXmOIN-SWDMOyJfXULJ9ZR6fPsiocR56YBKuuPqXWOZfGigvyrswwY6YAMdc-H7WJpqoCFsgsIoC_qCJkqChb8xOhl1nNwFxg-eVKf4JzI9R82xG0RoOIKFHgGvXIFsdSitj6TuH3igiDibUjbLr46qBT0EnFCPnppDrQ_EP_WtwWyFOJEP1zyzpApBgfoSb4hOIVlwWMAheTJy924JF05ZXOcOAcNWYa6TXc7tBjd9WJYVa8zkPndowQ5cYMOvzMwURXVeSXMxYr3j9Vqbb3R9RqHHrnidrso_zGq73HRFV2l0i_gFBibANDiR_0K8cZMbfZOtHO8gMd6nxr_DIWK5nCRAL5NTNOKK7SjOwQwP8vZm5luh8HYEJqZdSlcll2PaS8FikKa4Al34U2BS9OIxUGRHmuX2SWcHuSq5lx3zDNOklLboeIGLfi_UBuAFyNe2DqY78SuV5rrNIA2_sZuEQRBgFZDU8OkUtW6NbhqgDuVwwOHcuzO1W3pjyZitEwbjHR5oRlWIRYfM-fSVPxcHpLQDQb68TIio-kxtwjuzVEiCHwQnReDEN4vnIJYfwqBGNrVHyYnjBX8-_L01RSdeKsMmh72kH56Wf8wByIhr0ajF5nvBQDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/departments/eliminar/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"departments",
+						"eliminar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
